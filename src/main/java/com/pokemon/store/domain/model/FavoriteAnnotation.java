@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -15,21 +16,23 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@IdClass(FavoriteAnnotationId.class)
 public class FavoriteAnnotation implements Serializable {
 
-    @EmbeddedId
-    public FavoriteAnnotationId id;
+    @Id
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(name = "ID_ANNOTATION", updatable = false, nullable = false)
+    private UUID aonnotationId;
 
-//    @Id
-//    @ManyToOne(fetch = FetchType.EAGER)
-//    @JoinColumn(name = "ID_USER", referencedColumnName = "ID_USER")
-//    private User user;
-//
-//    @Id
-//    @ManyToOne(fetch = FetchType.EAGER)
-//    @JoinColumn(name = "ID_POKEMON", referencedColumnName = "ID_POKEMON")
-//    private Pokemon pokemon;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "ID_USER", referencedColumnName = "ID_USER")
+    private User user;
+
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "ID_POKEMON", referencedColumnName = "ID_POKEMON")
+    private Pokemon pokemon;
 
 
 

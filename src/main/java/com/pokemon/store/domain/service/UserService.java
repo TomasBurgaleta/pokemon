@@ -19,8 +19,7 @@ public class UserService {
     public User getUserByName(String userName) {
         Optional<User> userOptional =  userRepository.findByUserName(userName);
         if(userOptional.isEmpty()){
-            User user = new User();
-            user.setUserName(userName);
+            User user = User.builder().userName(userName).build();
             userRepository.save(user);
             return user;
         }

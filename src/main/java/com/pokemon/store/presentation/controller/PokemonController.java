@@ -58,8 +58,7 @@ public class PokemonController {
                 .collect(Collectors.toList()));
     }
 
-    @GetMapping(value = "/favorites/{userName}" ,
-            produces = MediaType.IMAGE_PNG_VALUE)
+    @GetMapping(value = "/favorites/{userName}")
     public ResponseEntity<List<PokemonDto>> getFavoritePokemonByUser(@PathVariable("userName") String userName) {
         List<Pokemon> pokemonUser =  favoriteService.getFavoritesPokemon4User(userName);
 
@@ -70,8 +69,7 @@ public class PokemonController {
                 .collect(Collectors.toList()));
     }
 
-    @GetMapping(value = "/AllPokemonByUser/{userName}" ,
-            produces = MediaType.IMAGE_PNG_VALUE)
+    @GetMapping(value = "/AllPokemonByUser/{userName}")
     public ResponseEntity<List<PokemonUserDto>> getAllPokemonByUser(@PathVariable("userName") String userName) {
         List<Pokemon> pokemonList = pokemonService.getPokemons();
         List<Pokemon> pokemonUser =  favoriteService.getFavoritesPokemon4User(userName);

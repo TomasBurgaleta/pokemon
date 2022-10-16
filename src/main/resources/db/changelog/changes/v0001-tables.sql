@@ -15,9 +15,10 @@ create table public.POKEMON (
 
 
 create table public.FAVORITE_ANNOTATION (
+    ID_ANNOTATION UUID not null default random_uuid(),
     ID_USER UUID not null ,
     ID_POKEMON Integer not null,
-    constraint PK_FAVORITE_ANNOTATION primary key(ID_USER, ID_POKEMON)
+    constraint PK_FAVORITE_ANNOTATION primary key(ID_ANNOTATION)
 );
 
 alter table public.FAVORITE_ANNOTATION add FOREIGN KEY (ID_USER) REFERENCES public.USERS(ID_USER);
