@@ -3,11 +3,12 @@ package com.pokemon.store;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+
 @SpringBootApplication
-public class StoreApplication {
+public class PokemonApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(StoreApplication.class, args);
+		SpringApplication.run(PokemonApplication.class, args);
 	}
 
 }
